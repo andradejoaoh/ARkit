@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
 
     @IBOutlet var sceneView: ARSCNView!
     
@@ -22,6 +22,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        sceneView.scene.physicsWorld.contactDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,16 +57,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 case .hidrogenio:
                     shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
                 case .oxigenio:
-                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode)
+                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                case .carbono:
+                    break
+                case .nitrogenio:
+                    break
                 default:
                     return nil
                 }
             }
 
             guard let shape = shapeNode else {return nil}
+            shape.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: shape.geometry!))
             node.addChildNode(shape)
+            return node
         }
-        return node
+        return nil
+    }
+
+    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,6 +85,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
+
 
     // MARK: - ARSCNViewDelegate
     

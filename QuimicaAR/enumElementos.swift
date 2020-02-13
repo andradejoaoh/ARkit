@@ -10,5 +10,6 @@ import Foundation
 enum Elemento: String {
     case hidrogenio
     case oxigenio
-    case enxofre
+    case carbono
+    case nitrogenio
 }
