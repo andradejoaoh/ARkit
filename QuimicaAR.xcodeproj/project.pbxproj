@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6138240123F49C55003D4FAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6138240023F49C55003D4FAF /* AppDelegate.swift */; };
-		6138240323F49C55003D4FAF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 6138240223F49C55003D4FAF /* art.scnassets */; };
-		6138240523F49C55003D4FAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6138240423F49C55003D4FAF /* ViewController.swift */; };
-		6138240823F49C55003D4FAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6138240623F49C55003D4FAF /* Main.storyboard */; };
-		6138240A23F49C59003D4FAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6138240923F49C59003D4FAF /* Assets.xcassets */; };
-		6138240D23F49C59003D4FAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6138240B23F49C59003D4FAF /* LaunchScreen.storyboard */; };
+		619AE3ED23F5B42700A497EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE3EC23F5B42700A497EE /* AppDelegate.swift */; };
+		619AE3EF23F5B42700A497EE /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3EE23F5B42700A497EE /* art.scnassets */; };
+		619AE3F123F5B42700A497EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE3F023F5B42700A497EE /* ViewController.swift */; };
+		619AE3F423F5B42700A497EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F223F5B42700A497EE /* Main.storyboard */; };
+		619AE3F623F5B42900A497EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F523F5B42900A497EE /* Assets.xcassets */; };
+		619AE3F923F5B42900A497EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F723F5B42900A497EE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		613823FD23F49C55003D4FAF /* ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6138240023F49C55003D4FAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6138240223F49C55003D4FAF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		6138240423F49C55003D4FAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6138240723F49C55003D4FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6138240923F49C59003D4FAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6138240C23F49C59003D4FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6138240E23F49C59003D4FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		619AE3E923F5B42700A497EE /* QuimicaAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuimicaAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		619AE3EC23F5B42700A497EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		619AE3EE23F5B42700A497EE /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		619AE3F023F5B42700A497EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		619AE3F323F5B42700A497EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		619AE3F523F5B42900A497EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		619AE3F823F5B42900A497EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		619AE3FA23F5B42900A497EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		613823FA23F49C55003D4FAF /* Frameworks */ = {
+		619AE3E623F5B42700A497EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,72 +37,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		613823F423F49C55003D4FAF = {
+		619AE3E023F5B42700A497EE = {
 			isa = PBXGroup;
 			children = (
-				613823FF23F49C55003D4FAF /* ARKit */,
-				613823FE23F49C55003D4FAF /* Products */,
+				619AE3EB23F5B42700A497EE /* QuimicaAR */,
+				619AE3EA23F5B42700A497EE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		613823FE23F49C55003D4FAF /* Products */ = {
+		619AE3EA23F5B42700A497EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				613823FD23F49C55003D4FAF /* ARKit.app */,
+				619AE3E923F5B42700A497EE /* QuimicaAR.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		613823FF23F49C55003D4FAF /* ARKit */ = {
+		619AE3EB23F5B42700A497EE /* QuimicaAR */ = {
 			isa = PBXGroup;
 			children = (
-				6138240023F49C55003D4FAF /* AppDelegate.swift */,
-				6138240423F49C55003D4FAF /* ViewController.swift */,
-				6138240623F49C55003D4FAF /* Main.storyboard */,
-				6138240B23F49C59003D4FAF /* LaunchScreen.storyboard */,
-				6138240223F49C55003D4FAF /* art.scnassets */,
-				6138240923F49C59003D4FAF /* Assets.xcassets */,
-				6138240E23F49C59003D4FAF /* Info.plist */,
+				619AE3EC23F5B42700A497EE /* AppDelegate.swift */,
+				619AE3F023F5B42700A497EE /* ViewController.swift */,
+				619AE3F223F5B42700A497EE /* Main.storyboard */,
+				619AE3F723F5B42900A497EE /* LaunchScreen.storyboard */,
+				619AE3EE23F5B42700A497EE /* art.scnassets */,
+				619AE3F523F5B42900A497EE /* Assets.xcassets */,
+				619AE3FA23F5B42900A497EE /* Info.plist */,
 			);
-			path = ARKit;
+			path = QuimicaAR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		613823FC23F49C55003D4FAF /* ARKit */ = {
+		619AE3E823F5B42700A497EE /* QuimicaAR */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6138241123F49C59003D4FAF /* Build configuration list for PBXNativeTarget "ARKit" */;
+			buildConfigurationList = 619AE3FD23F5B42900A497EE /* Build configuration list for PBXNativeTarget "QuimicaAR" */;
 			buildPhases = (
-				613823F923F49C55003D4FAF /* Sources */,
-				613823FA23F49C55003D4FAF /* Frameworks */,
-				613823FB23F49C55003D4FAF /* Resources */,
+				619AE3E523F5B42700A497EE /* Sources */,
+				619AE3E623F5B42700A497EE /* Frameworks */,
+				619AE3E723F5B42700A497EE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ARKit;
-			productName = ARKit;
-			productReference = 613823FD23F49C55003D4FAF /* ARKit.app */;
+			name = QuimicaAR;
+			productName = QuimicaAR;
+			productReference = 619AE3E923F5B42700A497EE /* QuimicaAR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		613823F523F49C55003D4FAF /* Project object */ = {
+		619AE3E123F5B42700A497EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "João Henrique Andrade";
 				TargetAttributes = {
-					613823FC23F49C55003D4FAF = {
+					619AE3E823F5B42700A497EE = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 613823F823F49C55003D4FAF /* Build configuration list for PBXProject "ARKit" */;
+			buildConfigurationList = 619AE3E423F5B42700A497EE /* Build configuration list for PBXProject "QuimicaAR" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +110,55 @@
 				en,
 				Base,
 			);
-			mainGroup = 613823F423F49C55003D4FAF;
-			productRefGroup = 613823FE23F49C55003D4FAF /* Products */;
+			mainGroup = 619AE3E023F5B42700A497EE;
+			productRefGroup = 619AE3EA23F5B42700A497EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				613823FC23F49C55003D4FAF /* ARKit */,
+				619AE3E823F5B42700A497EE /* QuimicaAR */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		613823FB23F49C55003D4FAF /* Resources */ = {
+		619AE3E723F5B42700A497EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6138240323F49C55003D4FAF /* art.scnassets in Resources */,
-				6138240D23F49C59003D4FAF /* LaunchScreen.storyboard in Resources */,
-				6138240A23F49C59003D4FAF /* Assets.xcassets in Resources */,
-				6138240823F49C55003D4FAF /* Main.storyboard in Resources */,
+				619AE3EF23F5B42700A497EE /* art.scnassets in Resources */,
+				619AE3F923F5B42900A497EE /* LaunchScreen.storyboard in Resources */,
+				619AE3F623F5B42900A497EE /* Assets.xcassets in Resources */,
+				619AE3F423F5B42700A497EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		613823F923F49C55003D4FAF /* Sources */ = {
+		619AE3E523F5B42700A497EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6138240523F49C55003D4FAF /* ViewController.swift in Sources */,
-				6138240123F49C55003D4FAF /* AppDelegate.swift in Sources */,
+				619AE3F123F5B42700A497EE /* ViewController.swift in Sources */,
+				619AE3ED23F5B42700A497EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6138240623F49C55003D4FAF /* Main.storyboard */ = {
+		619AE3F223F5B42700A497EE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6138240723F49C55003D4FAF /* Base */,
+				619AE3F323F5B42700A497EE /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		6138240B23F49C59003D4FAF /* LaunchScreen.storyboard */ = {
+		619AE3F723F5B42900A497EE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6138240C23F49C59003D4FAF /* Base */,
+				619AE3F823F5B42900A497EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6138240F23F49C59003D4FAF /* Debug */ = {
+		619AE3FB23F5B42900A497EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +226,7 @@
 			};
 			name = Debug;
 		};
-		6138241023F49C59003D4FAF /* Release */ = {
+		619AE3FC23F5B42900A497EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,36 +280,36 @@
 			};
 			name = Release;
 		};
-		6138241223F49C59003D4FAF /* Debug */ = {
+		619AE3FE23F5B42900A497EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557CPNQUYB;
-				INFOPLIST_FILE = ARKit/Info.plist;
+				INFOPLIST_FILE = QuimicaAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.jha.ARKit;
+				PRODUCT_BUNDLE_IDENTIFIER = br.jha.QuimicaAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6138241323F49C59003D4FAF /* Release */ = {
+		619AE3FF23F5B42900A497EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557CPNQUYB;
-				INFOPLIST_FILE = ARKit/Info.plist;
+				INFOPLIST_FILE = QuimicaAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.jha.ARKit;
+				PRODUCT_BUNDLE_IDENTIFIER = br.jha.QuimicaAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -319,25 +319,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		613823F823F49C55003D4FAF /* Build configuration list for PBXProject "ARKit" */ = {
+		619AE3E423F5B42700A497EE /* Build configuration list for PBXProject "QuimicaAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6138240F23F49C59003D4FAF /* Debug */,
-				6138241023F49C59003D4FAF /* Release */,
+				619AE3FB23F5B42900A497EE /* Debug */,
+				619AE3FC23F5B42900A497EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6138241123F49C59003D4FAF /* Build configuration list for PBXNativeTarget "ARKit" */ = {
+		619AE3FD23F5B42900A497EE /* Build configuration list for PBXNativeTarget "QuimicaAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6138241223F49C59003D4FAF /* Debug */,
-				6138241323F49C59003D4FAF /* Release */,
+				619AE3FE23F5B42900A497EE /* Debug */,
+				619AE3FF23F5B42900A497EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 613823F523F49C55003D4FAF /* Project object */;
+	rootObject = 619AE3E123F5B42700A497EE /* Project object */;
 }
