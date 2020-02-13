@@ -60,10 +60,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                     shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
                 case .carbono:
                     shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                case .fluor:
+                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
                 case .nitrogenio:
-                    break
-                default:
-                    return nil
+                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
                 }
             }
 
