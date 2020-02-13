@@ -34,10 +34,42 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-
+        let configuration = ARImageTrackingConfiguration()
+        
+        if let trackingCards = ARReferenceImage.referenceImages(inGroupNamed: "Cartas Elementos", bundle: Bundle.main) {
+            configuration.trackingImages = trackingCards
+            configuration.maximumNumberOfTrackedImages = 4
+        }
         // Run the view's session
         sceneView.session.run(configuration)
+    }
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        
+        let node = SCNNode()
+        
+        if let imageAnchor = anchor as? ARImageAnchor{
+            let size = imageAnchor.referenceImage.physicalSize
+            let plane = SCNPlane(width: size.width, height: size.height)
+            plane.firstMaterial?.diffuse.contents = UIColor.white.withAlphaComponent(0.5)
+            plane.cornerRadius = 2
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.eulerAngles.x = -.pi/2
+            node.addChildNode(planeNode)
+            
+            var shapeNode: SCNNode?
+            if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
+                switch elemento {
+                case .hidrogenio:
+                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                default:
+                    return nil
+                }
+            }
+
+            guard let shape = shapeNode else {return nil}
+            node.addChildNode(shape)
+        }
+        return node
     }
     
     override func viewWillDisappear(_ animated: Bool) {
