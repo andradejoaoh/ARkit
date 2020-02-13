@@ -59,7 +59,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 case .oxigenio:
                     shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
                 case .carbono:
-                    break
+                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
                 case .nitrogenio:
                     break
                 default:

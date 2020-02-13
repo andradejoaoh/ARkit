@@ -12,4 +12,5 @@ enum Elemento: String {
     case oxigenio
     case carbono
     case nitrogenio
+    case fluor
 }

@@ -4,6 +4,20 @@
     "author" : "xcode"
   },
   "resources" : [
-
+    {
+      "filename" : "carbono.arreferenceimage"
+    },
+    {
+      "filename" : "fluor.arreferenceimage"
+    },
+    {
+      "filename" : "hidrogenio.arreferenceimage"
+    },
+    {
+      "filename" : "nitrogenio.arreferenceimage"
+    },
+    {
+      "filename" : "oxigenio.arreferenceimage"
+    }
   ]
 }
