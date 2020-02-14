@@ -6,24 +6,24 @@
 //  Copyright © 2020 João Henrique Andrade. All rights reserved.
 //
 
-import Foundation
-class JSONHandler {
-    
-    static let shared = JSONHandler()
-    private init() {}
-    
-    var elementos: [Atomo] = []
-    
-    func readAtomos() {
-        guard let fileUrl = Bundle.main.url(forResource: "Atomos", withExtension: "json") else {
-            print("File could not be located at the given url")
-            return
-        }
-        do {
-            let data = try Data(contentsOf: fileUrl)
-            elementos = try JSONDecoder().decode([Atomo].self, from: data)
-        } catch {
-            print("Error: \(error)")
-        }
-    }
-}
+//import Foundation
+//class JSONHandler {
+//    
+//    static let shared = JSONHandler()
+//    private init() {}
+//    
+//    var elementos: [Atomo] = []
+//    
+//    func readAtomos() {
+//        guard let fileUrl = Bundle.main.url(forResource: "Atomos", withExtension: "json") else {
+//            print("File could not be located at the given url")
+//            return
+//        }
+//        do {
+//            let data = try Data(contentsOf: fileUrl)
+//            elementos = try JSONDecoder().decode([Atomo].self, from: data)
+//        } catch {
+//            print("Error: \(error)")
+//        }
+//    }
+//}

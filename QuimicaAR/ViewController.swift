@@ -13,6 +13,9 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
     
     @IBOutlet var sceneView: ARSCNView!
+    
+    var moleculeConection: [SCNGeometry] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
@@ -49,7 +52,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             planeNode.eulerAngles.x = -.pi/2
             node.addChildNode(planeNode)
         
-            var shapeNode: SCNNode?
+            var shapeNode: Atomo?
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
                 case .hidrogenio:
@@ -69,8 +72,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                     shapeNode?.name = "nitrogenio"
                 }
             }
-
             guard let shape = shapeNode else {return nil}
+
             node.addChildNode(shape)
             return node
         }
@@ -78,9 +81,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        if contact.nodeA.name == "carbono" {
-            print("foi")
-        }
+        let line = SCNGeometry.line(from: contact.nodeB.position, to: contact.nodeA.position)
+        let lineNode = SCNNode(geometry: line)
+        lineNode.position = SCNVector3Zero
+        contact.nodeA.addChildNode(lineNode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

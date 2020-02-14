@@ -9,15 +9,17 @@
 import Foundation
 import SceneKit
 
-class Atomo: SCNNode, Codable {
+class Atomo: SCNNode {
     var nomeElemento: String?
     var eletronsNaValencia: Int?
-    
     init(_ nomeElemento: String, _ eletronsNaValencia: Int) {
         super.init()
+        let atomoNode = (SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!
         self.nomeElemento = nomeElemento
-        self.eletronsNaValencia = JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.eletronsNaValencia
-        self.addChildNode((SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!)
+        self.eletronsNaValencia = 2
+//            JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.eletronsNaValencia
+        
+        self.addChildNode(atomoNode)
     }
     
     required init?(coder: NSCoder) {
