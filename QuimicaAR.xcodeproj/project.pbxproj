@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		618B110423F7057F007C5474 /* Atomo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B110323F7057F007C5474 /* Atomo.swift */; };
+		618B110623F706A8007C5474 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B110523F706A8007C5474 /* JSONHandler.swift */; };
+		618B110823F70706007C5474 /* Atomos.json in Resources */ = {isa = PBXBuildFile; fileRef = 618B110723F70706007C5474 /* Atomos.json */; };
 		619AE3ED23F5B42700A497EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE3EC23F5B42700A497EE /* AppDelegate.swift */; };
 		619AE3EF23F5B42700A497EE /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3EE23F5B42700A497EE /* art.scnassets */; };
 		619AE3F123F5B42700A497EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE3F023F5B42700A497EE /* ViewController.swift */; };
 		619AE3F423F5B42700A497EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F223F5B42700A497EE /* Main.storyboard */; };
 		619AE3F623F5B42900A497EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F523F5B42900A497EE /* Assets.xcassets */; };
 		619AE3F923F5B42900A497EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F723F5B42900A497EE /* LaunchScreen.storyboard */; };
-		619AE42123F5BD1900A497EE /* enumElementos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE42023F5BD1900A497EE /* enumElementos.swift */; };
+		619AE42123F5BD1900A497EE /* EnumElementos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE42023F5BD1900A497EE /* EnumElementos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		618B110323F7057F007C5474 /* Atomo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomo.swift; sourceTree = "<group>"; };
+		618B110523F706A8007C5474 /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
+		618B110723F70706007C5474 /* Atomos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Atomos.json; sourceTree = "<group>"; };
 		619AE3E923F5B42700A497EE /* QuimicaAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuimicaAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		619AE3EC23F5B42700A497EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		619AE3EE23F5B42700A497EE /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -25,7 +31,7 @@
 		619AE3F523F5B42900A497EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		619AE3F823F5B42900A497EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		619AE3FA23F5B42900A497EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		619AE42023F5BD1900A497EE /* enumElementos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumElementos.swift; sourceTree = "<group>"; };
+		619AE42023F5BD1900A497EE /* EnumElementos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumElementos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +66,15 @@
 			children = (
 				619AE3EC23F5B42700A497EE /* AppDelegate.swift */,
 				619AE3F023F5B42700A497EE /* ViewController.swift */,
-				619AE42023F5BD1900A497EE /* enumElementos.swift */,
+				619AE42023F5BD1900A497EE /* EnumElementos.swift */,
+				618B110523F706A8007C5474 /* JSONHandler.swift */,
+				618B110323F7057F007C5474 /* Atomo.swift */,
 				619AE3F223F5B42700A497EE /* Main.storyboard */,
 				619AE3F723F5B42900A497EE /* LaunchScreen.storyboard */,
 				619AE3EE23F5B42700A497EE /* art.scnassets */,
 				619AE3F523F5B42900A497EE /* Assets.xcassets */,
 				619AE3FA23F5B42900A497EE /* Info.plist */,
+				618B110723F70706007C5474 /* Atomos.json */,
 			);
 			path = QuimicaAR;
 			sourceTree = "<group>";
@@ -132,6 +141,7 @@
 				619AE3F923F5B42900A497EE /* LaunchScreen.storyboard in Resources */,
 				619AE3F623F5B42900A497EE /* Assets.xcassets in Resources */,
 				619AE3F423F5B42700A497EE /* Main.storyboard in Resources */,
+				618B110823F70706007C5474 /* Atomos.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +153,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				619AE3F123F5B42700A497EE /* ViewController.swift in Sources */,
+				618B110623F706A8007C5474 /* JSONHandler.swift in Sources */,
 				619AE3ED23F5B42700A497EE /* AppDelegate.swift in Sources */,
-				619AE42123F5BD1900A497EE /* enumElementos.swift in Sources */,
+				618B110423F7057F007C5474 /* Atomo.swift in Sources */,
+				619AE42123F5BD1900A497EE /* EnumElementos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

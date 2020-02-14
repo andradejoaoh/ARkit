@@ -1,0 +1,20 @@
+[{
+    "nomeElemento" : "hidrogenio"
+    "eletronsNaValencia" : "2"
+},
+{
+    "nomeElemento" : "oxigenio"
+    "eletronsNaValencia" : "6"
+},
+{
+    "nomeElemento" : "carbono"
+    "eletronsNaValencia" : "4"
+},
+{
+    "nomeElemento" : "fluor"
+    "eletronsNaValencia" : "7"
+},
+{
+    "nomeElemento" : "nitrogenio"
+    "eletronsNaValencia" : "5"
+}]

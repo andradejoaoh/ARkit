@@ -13,10 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
 
     @IBOutlet var sceneView: ARSCNView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -50,25 +48,25 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             let planeNode = SCNNode(geometry: plane)
             planeNode.eulerAngles.x = -.pi/2
             node.addChildNode(planeNode)
-            
+        
             var shapeNode: SCNNode?
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
                 case .hidrogenio:
-                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                    shapeNode = Atomo("carbono", 4)
                 case .oxigenio:
-                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                    shapeNode = Atomo("carbono", 4)
                 case .carbono:
-                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                    shapeNode = Atomo("carbono", 4)
+
                 case .fluor:
-                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                    shapeNode = Atomo("carbono", 4)
                 case .nitrogenio:
-                    shapeNode = SCNScene(named: "art.scnassets/ship.scn")?.rootNode
+                    shapeNode = Atomo("carbono", 4)
                 }
             }
 
             guard let shape = shapeNode else {return nil}
-            shape.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: shape.geometry!))
             node.addChildNode(shape)
             return node
         }
