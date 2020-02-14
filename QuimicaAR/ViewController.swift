@@ -13,6 +13,9 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    var moleculeConection: [SCNGeometry] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
