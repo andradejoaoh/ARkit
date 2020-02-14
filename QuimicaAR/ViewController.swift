@@ -81,10 +81,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        let line = SCNGeometry.line(from: contact.nodeB.position, to: contact.nodeA.position)
-        let lineNode = SCNNode(geometry: line)
-        lineNode.position = SCNVector3Zero
-        contact.nodeA.addChildNode(lineNode)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,8 +90,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Pause the view's session
         sceneView.session.pause()
     }
-
-
+    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -121,3 +117,4 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
     }
 }
+
