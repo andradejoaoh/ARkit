@@ -14,7 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
 
     @IBOutlet var sceneView: ARSCNView!
     
-    var moleculeConection: [SCNGeometry] = []
+    var moleculeConection: [SCNNode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +71,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 guard let eletronsInValencia = shapeNode?.eletronsNaValencia else { return nil }
                 
                 for _ in 0..<eletronsInValencia {
-                    let line = SCNGeometry()
+                    let line = SCNNode()
                     moleculeConection.append(line)
                 }
                 
@@ -89,10 +89,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
         let firstAtom = contact.nodeA
         let secondAtom = contact.nodeB
+        var line: SCNNode?
         for i in moleculeConection {
             var index:Int = 0
-            let line = i.lineFrom(by: firstAtom.position, to: secondAtom.position)
-            firstAtom.geometry = line
+            line = i.lineNode(from: firstAtom.position, to: secondAtom.position)
+            guard let line = line else { return }
+            firstAtom.addChildNode(line)
             moleculeConection.remove(at:index)
             index += 1
         }
