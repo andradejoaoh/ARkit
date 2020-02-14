@@ -11,7 +11,7 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
-
+    
     @IBOutlet var sceneView: ARSCNView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +54,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 switch elemento {
                 case .hidrogenio:
                     shapeNode = Atomo("carbono", 4)
+                    shapeNode?.name = "hidrogenio"
                 case .oxigenio:
                     shapeNode = Atomo("carbono", 4)
+                    shapeNode?.name = "oxigenio"
                 case .carbono:
                     shapeNode = Atomo("carbono", 4)
-
+                    shapeNode?.name = "carbono"
                 case .fluor:
                     shapeNode = Atomo("carbono", 4)
+                    shapeNode?.name = "fluor"
                 case .nitrogenio:
                     shapeNode = Atomo("carbono", 4)
+                    shapeNode?.name = "nitrogenio"
                 }
             }
 
@@ -72,9 +76,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         }
         return nil
     }
-
-    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-        
+    
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        if contact.nodeA.name == "carbono" {
+            print("foi")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
