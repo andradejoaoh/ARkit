@@ -52,7 +52,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             planeNode.eulerAngles.x = -.pi/2
             node.addChildNode(planeNode)
         
-            var shapeNode: SCNNode?
+            var shapeNode: Atomo?
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
                 case .hidrogenio:
@@ -67,7 +67,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 case .nitrogenio:
                     shapeNode = Atomo("carbono", 4)
                 }
+                
+                guard let eletronsInValencia = shapeNode?.eletronsNaValencia else { return nil }
+                
+                for _ in 0..<eletronsInValencia {
+                    let line = SCNGeometry()
+                    moleculeConection.append(line)
+                }
+                
+                
             }
+            
 
             guard let shape = shapeNode else {return nil}
             node.addChildNode(shape)
@@ -77,7 +87,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-        
+        let firstAtom = contact.nodeA
+        let secondAtom = contact.nodeB
+        for i in moleculeConection {
+            var index:Int = 0
+            let line = i.lineFrom(by: firstAtom.position, to: secondAtom.position)
+            firstAtom.geometry = line
+            moleculeConection.remove(at:index)
+            index += 1
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
