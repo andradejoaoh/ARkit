@@ -28,6 +28,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
         mat.diffuse.contents  = UIColor.white
         mat.specular.contents = UIColor.white
+        
+        JSONHandler.shared.readAtomos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,19 +61,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
                 case .hidrogenio:
-                    shapeNode = Atomo("hidrogenio", 4)
+                    shapeNode = Atomo("hidrogenio")
                     shapeNode?.name = "hidrogenio"
                 case .oxigenio:
-                    shapeNode = Atomo("oxigenio", 4)
+                    shapeNode = Atomo("oxigenio")
                     shapeNode?.name = "oxigenio"
                 case .carbono:
-                    shapeNode = Atomo("carbono", 4)
+                    shapeNode = Atomo("carbono")
                     shapeNode?.name = "carbono"
                 case .fluor:
-                    shapeNode = Atomo("fluor", 4)
+                    shapeNode = Atomo("fluor")
                     shapeNode?.name = "fluor"
                 case .nitrogenio:
-                    shapeNode = Atomo("nitrogenio", 4)
+                    shapeNode = Atomo("nitrogenio")
                     shapeNode?.name = "nitrogenio"
                 }
             }
