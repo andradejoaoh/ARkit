@@ -18,7 +18,12 @@ class Atomo: SCNNode {
         self.nomeElemento = nomeElemento
         self.eletronsNaValencia = 2
 //            JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.eletronsNaValencia
-        
+        atomoNode.physicsBody?.categoryBitMask = 1
+        atomoNode.physicsBody?.contactTestBitMask = 1
+        atomoNode.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.categoryBitMask = 0
+        self.physicsBody?.contactTestBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
         self.addChildNode(atomoNode)
     }
     

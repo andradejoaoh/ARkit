@@ -15,7 +15,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     @IBOutlet var sceneView: ARSCNView!
     
     var moleculeConection: [SCNGeometry] = []
-    
+    let mat = SCNMaterial()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
@@ -24,6 +25,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         sceneView.scene.physicsWorld.contactDelegate = self
+        
+        mat.diffuse.contents  = UIColor.white
+        mat.specular.contents = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,24 +55,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             let planeNode = SCNNode(geometry: plane)
             planeNode.eulerAngles.x = -.pi/2
             node.addChildNode(planeNode)
-        
             var shapeNode: Atomo?
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
                 case .hidrogenio:
-                    shapeNode = Atomo("carbono", 4)
+                    shapeNode = Atomo("hidrogenio", 4)
                     shapeNode?.name = "hidrogenio"
                 case .oxigenio:
-                    shapeNode = Atomo("carbono", 4)
+                    shapeNode = Atomo("oxigenio", 4)
                     shapeNode?.name = "oxigenio"
                 case .carbono:
                     shapeNode = Atomo("carbono", 4)
                     shapeNode?.name = "carbono"
                 case .fluor:
-                    shapeNode = Atomo("carbono", 4)
+                    shapeNode = Atomo("fluor", 4)
                     shapeNode?.name = "fluor"
                 case .nitrogenio:
-                    shapeNode = Atomo("carbono", 4)
+                    shapeNode = Atomo("nitrogenio", 4)
                     shapeNode?.name = "nitrogenio"
                 }
             }
@@ -81,8 +84,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        
+        let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
+        nodeLinha.eulerAngles.x = .pi/2
+    
+        self.sceneView.scene.rootNode.addChildNode(nodeLinha)
     }
+
+
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -115,6 +123,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    func createCilider(posA: SCNVector3, posB: SCNVector3) -> SCNNode {
+        let node1Pos = SCNVector3ToGLKVector3(posA)
+        let node2Pos = SCNVector3ToGLKVector3(posB)
+
+        let height = GLKVector3Distance(node1Pos, node2Pos)
+        let cilindroPosition = SCNVector3(x: (posA.x + posB.x)/2, y: (posA.y + posB.y)/2, z: (posA.z + posB.z)/2)
+        
+        let cilinderNode = SCNNode(geometry: SCNCylinder(radius: 0.005, height: CGFloat(height)))
+        cilinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        cilinderNode.worldPosition = cilindroPosition
+        cilinderNode.physicsBody?.categoryBitMask = 0
+        cilinderNode.physicsBody?.contactTestBitMask = 0
+        cilinderNode.physicsBody?.collisionBitMask = 0
+        return cilinderNode
     }
 }
 
