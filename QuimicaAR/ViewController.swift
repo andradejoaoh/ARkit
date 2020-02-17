@@ -14,7 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     @IBOutlet var sceneView: ARSCNView!
     
-    var moleculeConection: [SCNGeometry] = []
+    var moleculeConection: [SCNNode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,18 +72,32 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                     shapeNode?.name = "nitrogenio"
                 }
             }
-            guard let shape = shapeNode else {return nil}
-
+            guard let eletronsInValencia = shapeNode?.eletronsNaValencia else { return nil }
+                        
+            for _ in 0..<eletronsInValencia {
+                let line = SCNNode()
+                moleculeConection.append(line)
+            }
+                
+        guard let shape = shapeNode else {return nil}
             node.addChildNode(shape)
             return node
+            }
+            return nil
         }
-        return nil
-    }
-    
-    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        
-    }
-    
+
+        func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+            let firstAtom = contact.nodeA
+            let secondAtom = contact.nodeB
+            var line: SCNNode?
+            for i in moleculeConection {
+                var index:Int = 0
+                line = i.lineNode(from: firstAtom.position, to: secondAtom.position)
+                guard let line = line else { return }
+                firstAtom.addChildNode(line)
+                moleculeConection.remove(at:index)
+                index += 1
+            }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
