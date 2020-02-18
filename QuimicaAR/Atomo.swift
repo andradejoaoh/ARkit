@@ -12,6 +12,7 @@ import SceneKit
 class Atomo: SCNNode {
     var nomeElemento: String?
     var numeroDeLigacoes: Int?
+    var ligacoes: [Atomo] = []
     init(_ nomeElemento: String) {
         super.init()
         let atomoNode = (SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!

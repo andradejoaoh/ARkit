@@ -88,13 +88,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         guard let firstNode = contact.nodeA.parent as? Atomo else {return}
         guard let secondNode = contact.nodeB.parent as? Atomo else {return}
-        
-        let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
-        nodeLinha.eulerAngles.x = .pi/2
-    
-        self.sceneView.scene.rootNode.addChildNode(nodeLinha)
+        if (firstNode.ligacoes.count < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes.count < firstNode.numeroDeLigacoes ?? 0) && (firstNode.ligacoes.contains(secondNode) == false) && (secondNode.ligacoes.contains(firstNode) == false) {
+            firstNode.ligacoes.append(secondNode)
+            secondNode.ligacoes.append(firstNode)
+            let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
+            nodeLinha.eulerAngles.x = .pi/2
+            self.sceneView.scene.rootNode.addChildNode(nodeLinha)
+        }
+        return
     }
-
 
     
     override func viewWillDisappear(_ animated: Bool) {
