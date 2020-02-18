@@ -19,6 +19,7 @@
 		619AE3F923F5B42900A497EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619AE3F723F5B42900A497EE /* LaunchScreen.storyboard */; };
 		619AE42123F5BD1900A497EE /* EnumElementos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619AE42023F5BD1900A497EE /* EnumElementos.swift */; };
 		D9AF8D5D23FAFF35000D40C3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF8D5C23FAFF35000D40C3 /* Extensions.swift */; };
+		D9AF8D5F23FB2390000D40C3 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF8D5E23FB2390000D40C3 /* Molecule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		619AE3FA23F5B42900A497EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		619AE42023F5BD1900A497EE /* EnumElementos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumElementos.swift; sourceTree = "<group>"; };
 		D9AF8D5C23FAFF35000D40C3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D9AF8D5E23FB2390000D40C3 /* Molecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				619AE3FA23F5B42900A497EE /* Info.plist */,
 				618B110723F70706007C5474 /* Atomos.json */,
 				D9AF8D5C23FAFF35000D40C3 /* Extensions.swift */,
+				D9AF8D5E23FB2390000D40C3 /* Molecule.swift */,
 			);
 			path = QuimicaAR;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				619AE42123F5BD1900A497EE /* EnumElementos.swift in Sources */,
 				6155817823F7455300B6B942 /* AtomoCodable.swift in Sources */,
 				D9AF8D5D23FAFF35000D40C3 /* Extensions.swift in Sources */,
+				D9AF8D5F23FB2390000D40C3 /* Molecule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 557CPNQUYB;
+				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
 				INFOPLIST_FILE = QuimicaAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -327,7 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 557CPNQUYB;
+				DEVELOPMENT_TEAM = Q9Y63W6Q4X;
 				INFOPLIST_FILE = QuimicaAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

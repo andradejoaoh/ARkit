@@ -8,19 +8,6 @@
 
 import SceneKit
 
-extension SCNNode {
-    func lineNode(from: SCNVector3, to: SCNVector3, radius: CGFloat = 0.25) -> SCNNode {
-        let vector = to - from
-        let height = vector.length()
-        let cylinder = SCNCylinder(radius: radius, height: CGFloat(height))
-        cylinder.radialSegmentCount = 4
-        let node = SCNNode(geometry: cylinder)
-        node.position = (to + from) / 2
-        node.eulerAngles = SCNVector3.lineEulerAngles(vector: vector)
-        return node
-    }
-}
-
 extension SCNVector3 {
     
     func length() -> Float {
@@ -33,6 +20,10 @@ extension SCNVector3 {
     
     static func + (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
     return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
+    }
+    
+    static func absoluteSubtract (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+        return SCNVector3Make(abs(left.x - right.x), abs(left.y - right.y), abs(left.z - right.z))
     }
     
     static func / (vector: SCNVector3, scalar: Float) -> SCNVector3 {

@@ -12,7 +12,16 @@ import SceneKit
 class Atomo: SCNNode {
     var nomeElemento: String?
     var eletronsNaValencia: Int?
+    var atomsConnected: [Atomo] = []
+    var molecule : Molecule?
+    var id = String()
+    var idArray = [String]()
+    
+    
     init(_ nomeElemento: String, _ eletronsNaValencia: Int) {
+        
+        self.id = UUID().uuidString
+        
         super.init()
         let atomoNode = (SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!
         self.nomeElemento = nomeElemento
@@ -24,5 +33,25 @@ class Atomo: SCNNode {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func checkIfIsConnected(atom: Atomo) -> Atomo? {
+       
+        if atomsConnected.count != 0 {
+            
+            for i in atomsConnected {
+                if i.id == atom.id {
+                    return nil
+                } else {
+                    atomsConnected.append(atom)
+                    return atom
+                }
+            }
+            
+        } else {
+            atomsConnected.append(atom)
+            return atom
+        }
+        return nil
     }
 }
