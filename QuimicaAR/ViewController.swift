@@ -13,9 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
     
     @IBOutlet var sceneView: ARSCNView!
-    
-    var moleculeConection: [SCNGeometry] = []
-    let mat = SCNMaterial()
+    var ligacoes: [Ligacao] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +23,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         sceneView.scene.physicsWorld.contactDelegate = self
-        
-        mat.diffuse.contents  = UIColor.white
-        mat.specular.contents = UIColor.white
+
         
         JSONHandler.shared.readAtomos()
     }
@@ -88,28 +84,32 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         guard let firstNode = contact.nodeA.parent as? Atomo else {return}
         guard let secondNode = contact.nodeB.parent as? Atomo else {return}
-        if (firstNode.ligacoes.count < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes.count < firstNode.numeroDeLigacoes ?? 0) && (firstNode.ligacoes.contains(secondNode) == false) && (secondNode.ligacoes.contains(firstNode) == false) {
-            firstNode.ligacoes.append(secondNode)
-            secondNode.ligacoes.append(firstNode)
-            let nodeLinha: SCNNode = createCilider(nodeA: contact.nodeA, posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
-            nodeLinha.eulerAngles.z = .pi/2
-            firstNode.addChildNode(nodeLinha)
+        if (firstNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) {
+            let ligacao = Ligacao(firstNode, secondNode)
+            ligacao.eulerAngles.z = .pi/2
+            ligacoes.append(ligacao)
+            firstNode.addChildNode(ligacao)
         }
         return
     }
-
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        for child in sceneView.scene.rootNode.childNodes {
-            guard let atomoNode = child as? Atomo else {return}
-            for ligacao in atomoNode.ligacoes {
-                let posA = SCNVector3ToGLKVector3(ligacao.worldPosition)
-                let posB = SCNVector3ToGLKVector3(atomoNode.worldPosition)
-                let distance = GLKVector3Distance(posA, posB)
-                if distance > 0.09 && ligacao.childNodes.count > 2 {
-                    ligacao.childNodes.last?.removeFromParentNode()
-                }
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        for ligacao in ligacoes {
+            guard let firstAtomo = ligacao.atomos?.0 else {return}
+            guard let secondAtomo = ligacao.atomos?.1 else {return}
+            let firstPosition = SCNVector3ToGLKVector3(firstAtomo.worldPosition)
+            let secondPosition = SCNVector3ToGLKVector3(secondAtomo.worldPosition)
+            let distance = GLKVector3Distance(firstPosition, secondPosition)
+            
+            if distance > 0.12 {
+                ligacao.removeFromParentNode()
+                ligacoes.removeAll{ $0 == ligacao }
             }
+            
         }
+        
+    }
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
