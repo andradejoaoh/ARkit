@@ -86,6 +86,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     }
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        guard let firstNode = contact.nodeA.parent as? Atomo else {return}
+        guard let secondNode = contact.nodeB.parent as? Atomo else {return}
+        
         let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
         nodeLinha.eulerAngles.x = .pi/2
     
