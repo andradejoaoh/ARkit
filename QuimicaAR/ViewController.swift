@@ -91,13 +91,26 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         if (firstNode.ligacoes.count < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes.count < firstNode.numeroDeLigacoes ?? 0) && (firstNode.ligacoes.contains(secondNode) == false) && (secondNode.ligacoes.contains(firstNode) == false) {
             firstNode.ligacoes.append(secondNode)
             secondNode.ligacoes.append(firstNode)
-            let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
-            nodeLinha.eulerAngles.x = .pi/2
-            self.sceneView.scene.rootNode.addChildNode(nodeLinha)
+            let nodeLinha: SCNNode = createCilider(nodeA: contact.nodeA, posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
+            nodeLinha.eulerAngles.z = .pi/2
+            firstNode.addChildNode(nodeLinha)
         }
         return
     }
 
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        for child in sceneView.scene.rootNode.childNodes {
+            guard let atomoNode = child as? Atomo else {return}
+            for ligacao in atomoNode.ligacoes {
+                let posA = SCNVector3ToGLKVector3(ligacao.worldPosition)
+                let posB = SCNVector3ToGLKVector3(atomoNode.worldPosition)
+                let distance = GLKVector3Distance(posA, posB)
+                if distance > 0.09 && ligacao.childNodes.count > 2 {
+                    ligacao.childNodes.last?.removeFromParentNode()
+                }
+            }
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -105,7 +118,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Pause the view's session
         sceneView.session.pause()
     }
-    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -132,12 +144,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
     }
     
-    func createCilider(posA: SCNVector3, posB: SCNVector3) -> SCNNode {
+    func createCilider(nodeA: SCNNode, posA: SCNVector3, posB: SCNVector3) -> SCNNode {
         let node1Pos = SCNVector3ToGLKVector3(posA)
         let node2Pos = SCNVector3ToGLKVector3(posB)
 
         let height = GLKVector3Distance(node1Pos, node2Pos)
-        let cilindroPosition = SCNVector3(x: (posA.x + posB.x)/2, y: (posA.y + posB.y)/2, z: (posA.z + posB.z)/2)
+        let cilindroPosition = SCNVector3(x: nodeA.position.x + 0.05, y: nodeA.position.y, z: nodeA.position.z)
         
         let cilinderNode = SCNNode(geometry: SCNCylinder(radius: 0.005, height: CGFloat(height)))
         cilinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white

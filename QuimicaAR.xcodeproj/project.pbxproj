@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6155817823F7455300B6B942 /* AtomoCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155817723F7455300B6B942 /* AtomoCodable.swift */; };
+		615E055023FC800A00A638C1 /* Ligacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615E054F23FC800A00A638C1 /* Ligacao.swift */; };
 		616F5E7123FB20CF00B76469 /* EnumBitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616F5E7023FB20CF00B76469 /* EnumBitMask.swift */; };
 		618B110423F7057F007C5474 /* Atomo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B110323F7057F007C5474 /* Atomo.swift */; };
 		618B110623F706A8007C5474 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618B110523F706A8007C5474 /* JSONHandler.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		6155817723F7455300B6B942 /* AtomoCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomoCodable.swift; sourceTree = "<group>"; };
+		615E054F23FC800A00A638C1 /* Ligacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligacao.swift; sourceTree = "<group>"; };
 		616F5E7023FB20CF00B76469 /* EnumBitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumBitMask.swift; sourceTree = "<group>"; };
 		618B110323F7057F007C5474 /* Atomo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomo.swift; sourceTree = "<group>"; };
 		618B110523F706A8007C5474 /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				619AE3EC23F5B42700A497EE /* AppDelegate.swift */,
 				619AE3F023F5B42700A497EE /* ViewController.swift */,
+				615E054F23FC800A00A638C1 /* Ligacao.swift */,
 				616F5E7023FB20CF00B76469 /* EnumBitMask.swift */,
 				619AE42023F5BD1900A497EE /* EnumElementos.swift */,
 				618B110523F706A8007C5474 /* JSONHandler.swift */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615E055023FC800A00A638C1 /* Ligacao.swift in Sources */,
 				619AE3F123F5B42700A497EE /* ViewController.swift in Sources */,
 				616F5E7123FB20CF00B76469 /* EnumBitMask.swift in Sources */,
 				618B110623F706A8007C5474 /* JSONHandler.swift in Sources */,
