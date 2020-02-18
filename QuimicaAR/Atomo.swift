@@ -11,13 +11,12 @@ import SceneKit
 
 class Atomo: SCNNode {
     var nomeElemento: String?
-    var eletronsNaValencia: Int?
-    init(_ nomeElemento: String, _ eletronsNaValencia: Int) {
+    var numeroDeLigacoes: Int?
+    init(_ nomeElemento: String) {
         super.init()
         let atomoNode = (SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!
         self.nomeElemento = nomeElemento
-        self.eletronsNaValencia = 2
-//            JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.eletronsNaValencia
+        self.numeroDeLigacoes = JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.numeroDeLigacoes
         atomoNode.physicsBody?.categoryBitMask = 1
         atomoNode.physicsBody?.contactTestBitMask = 1
         atomoNode.physicsBody?.collisionBitMask = 0
