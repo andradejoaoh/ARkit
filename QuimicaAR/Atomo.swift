@@ -18,16 +18,19 @@ class Atomo: SCNNode {
     var idArray = [String]()
     
     
-    init(_ nomeElemento: String, _ eletronsNaValencia: Int) {
+    init(_ nomeElemento: String) {
         
         self.id = UUID().uuidString
-        
         super.init()
         let atomoNode = (SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!
         self.nomeElemento = nomeElemento
-        self.eletronsNaValencia = 2
-//            JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.eletronsNaValencia
-        
+        self.eletronsNaValencia = JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.numeroDeLigacoes
+        atomoNode.physicsBody?.categoryBitMask = 1
+        atomoNode.physicsBody?.contactTestBitMask = 1
+        atomoNode.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.categoryBitMask = 0
+        self.physicsBody?.contactTestBitMask = 0
+        self.physicsBody?.collisionBitMask = 0
         self.addChildNode(atomoNode)
     }
     

@@ -1,20 +1,20 @@
 [{
     "nomeElemento" : "hidrogenio"
-    "eletronsNaValencia" : "2"
+    "numeroDeLigacoes" : "2"
 },
 {
     "nomeElemento" : "oxigenio"
-    "eletronsNaValencia" : "6"
+    "numeroDeLigacoes" : "6"
 },
 {
     "nomeElemento" : "carbono"
-    "eletronsNaValencia" : "4"
+    "numeroDeLigacoes" : "4"
 },
 {
     "nomeElemento" : "fluor"
-    "eletronsNaValencia" : "7"
+    "numeroDeLigacoes" : "7"
 },
 {
     "nomeElemento" : "nitrogenio"
-    "eletronsNaValencia" : "5"
+    "numeroDeLigacoes" : "5"
 }]

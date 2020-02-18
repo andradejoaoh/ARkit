@@ -7,7 +7,8 @@
 //
 
 import Foundation
+
 class AtomoCodable: Codable {
     var nomeElemento: String?
-    var eletronsNaValencia: Int?
+    var numeroDeLigacoes: Int?
 }
