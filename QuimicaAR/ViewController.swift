@@ -75,12 +75,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                     shapeNode?.name = "nitrogenio"
                 }
             }
-            guard let eletronsInValencia = shapeNode?.eletronsNaValencia else { return nil }
-                        
-            for _ in 0..<eletronsInValencia {
-                let line = SCNNode()
-                moleculeConection.append(line)
-            }
                 
         guard let shape = shapeNode else {return nil}
             node.addChildNode(shape)
@@ -114,15 +108,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                 
                 
             }
-            
-
-//            atomConection.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-//            sceneView.scene.rootNode.addChildNode(atomConection)
-//            for i in moleculeConection.indices {
-//                line = moleculeConection[i].lineNode(from: firstAtom.position, to: secondAtom.position)
-//                guard let line = line else { return }
-//            firstAtom.addChildNode(line)
-//            moleculeConection.remove(at:i)
     }
     
     func createMolecule(firstAtom: Atomo) -> Molecule {
@@ -143,29 +128,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         return check
 
     }
-    
-//    func createMolecule() -> Molecule {
-//        if molecules.count == 0 {
-//            let molecule = Molecule()
-//            molecules.append(molecule)
-//            return molecule
-//        } else {
-//            for i in molecules {
-//                
-//            }
-//        }
-//    }
-//    
-//    func checkMolecule(molecule: Molecule) -> Bool{
-//        var check = false
-//        for i in molecules {
-//            if i.id == molecule.id {
-//                check = true
-//            }
-//        }
-//        return check
-//    }
-
     
     func lineNode(fromPosition: SCNVector3, fromWorldPosition: SCNVector3, toPosition:SCNVector3, toWorldPosition: SCNVector3, radius: CGFloat = 0.02) -> SCNNode {
         let vector = SCNVector3.absoluteSubtract(left: fromWorldPosition, right: toWorldPosition)
