@@ -14,7 +14,8 @@ class Atomo: SCNNode {
     var numeroDeLigacoes: Int?
     init(_ nomeElemento: String) {
         super.init()
-        let atomoNode = (SCNScene(named: "art.scnassets/sphere.scn")?.rootNode.childNode(withName: "sphere", recursively: false))!
+        let url = "art.scnassets/" + nomeElemento + ".scn"
+        let atomoNode = (SCNScene(named: url)?.rootNode.childNode(withName: nomeElemento, recursively: false))!
         self.nomeElemento = nomeElemento
         self.numeroDeLigacoes = JSONHandler.shared.elementos.first(where: {$0.nomeElemento == nomeElemento})?.numeroDeLigacoes
         atomoNode.physicsBody?.categoryBitMask = 1
