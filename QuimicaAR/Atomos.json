@@ -1,20 +1,20 @@
 [{
-    "nomeElemento" : "hidrogenio"
-    "numeroDeLigacoes" : "2"
+    "nomeElemento" : "hidrogenio",
+    "numeroDeLigacoes" : 1
 },
 {
-    "nomeElemento" : "oxigenio"
-    "numeroDeLigacoes" : "6"
+    "nomeElemento" : "oxigenio",
+    "numeroDeLigacoes" : 2
 },
 {
-    "nomeElemento" : "carbono"
-    "numeroDeLigacoes" : "4"
+    "nomeElemento" : "carbono",
+    "numeroDeLigacoes" : 4
 },
 {
-    "nomeElemento" : "fluor"
-    "numeroDeLigacoes" : "7"
+    "nomeElemento" : "fluor",
+    "numeroDeLigacoes" : 1
 },
 {
-    "nomeElemento" : "nitrogenio"
-    "numeroDeLigacoes" : "5"
+    "nomeElemento" : "nitrogenio",
+    "numeroDeLigacoes" : 3
 }]

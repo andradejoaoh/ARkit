@@ -17,7 +17,6 @@ class Atomo: SCNNode {
     var id = String()
     var idArray = [String]()
     
-    
     init(_ nomeElemento: String) {
         
         self.id = UUID().uuidString

@@ -115,7 +115,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         let molecule = Molecule(atom: firstAtom)
         molecules.append(molecule)
         return molecule
-        
     }
     
     func checkMolecule(firstAtom: Atomo, secondAtom: Atomo) -> Bool {
