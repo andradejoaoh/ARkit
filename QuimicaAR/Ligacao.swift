@@ -21,13 +21,16 @@ class Ligacao: SCNNode {
         let node2Pos = SCNVector3ToGLKVector3(segundoAtomo.worldPosition)
         
         let height = GLKVector3Distance(node1Pos, node2Pos)
-        let posicao = SCNVector3(x: primeiroAtomo.position.x + 0.05, y: primeiroAtomo.position.y, z: primeiroAtomo.position.z)
-        
+        let posicaoX = (primeiroAtomo.childNodes[0].worldPosition.x + segundoAtomo.childNodes[0].worldPosition.x)/2
+        let posicaoY = (primeiroAtomo.childNodes[0].worldPosition.y + segundoAtomo.childNodes[0].worldPosition.y)/2
+        let posicaoZ = (primeiroAtomo.childNodes[0].worldPosition.z + segundoAtomo.childNodes[0].worldPosition.z)/2
+        let posicao = SCNVector3(x: posicaoX, y: posicaoY, z: posicaoZ)
         let cilinderNode = SCNNode(geometry: SCNCylinder(radius: 0.005, height: CGFloat(height)))
         cilinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
         self.geometry = cilinderNode.geometry
-        self.position = posicao
-        
+        self.worldPosition = posicao
+        self.eulerAngles.z = .pi/2
+//        self.look(at: SCNVector3(x:(segundoAtomo.position.x + .pi/2), y: (segundoAtomo.position.y + .pi/2), z: segundoAtomo.position.z ))
     }
     
     required init?(coder: NSCoder) {

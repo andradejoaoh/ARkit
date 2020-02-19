@@ -56,13 +56,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             var shapeNode: Atomo?
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
-                case .hidrogenio:
+                case .hidrogenio, .hidrogenio1, .hidrogenio2, .hidrogenio3:
                     shapeNode = Atomo("hidrogenio")
                     shapeNode?.name = "hidrogenio"
                 case .oxigenio:
                     shapeNode = Atomo("oxigenio")
                     shapeNode?.name = "oxigenio"
-                case .carbono:
+                case .carbono, .carbono1, .carbono2, .carbono3:
                     shapeNode = Atomo("carbono")
                     shapeNode?.name = "carbono"
                 case .fluor:
@@ -86,7 +86,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         guard let secondNode = contact.nodeB.parent as? Atomo else {return}
         if (firstNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) {
             let ligacao = Ligacao(firstNode, secondNode)
-            ligacao.eulerAngles.z = .pi/2
+            firstNode.ligacoes += 1
+            secondNode.ligacoes += 1
             ligacoes.append(ligacao)
             firstNode.addChildNode(ligacao)
         }
@@ -100,7 +101,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             let secondPosition = SCNVector3ToGLKVector3(secondAtomo.worldPosition)
             let distance = GLKVector3Distance(firstPosition, secondPosition)
             
-            if distance > 0.12 {
+            if distance > 0.13 {
+                ligacao.atomos?.0.ligacoes -= 1
+                ligacao.atomos?.1.ligacoes -= 1
                 ligacao.removeFromParentNode()
                 ligacoes.removeAll{ $0 == ligacao }
             }
@@ -142,22 +145,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
-    }
-    
-    func createCilider(nodeA: SCNNode, posA: SCNVector3, posB: SCNVector3) -> SCNNode {
-        let node1Pos = SCNVector3ToGLKVector3(posA)
-        let node2Pos = SCNVector3ToGLKVector3(posB)
-
-        let height = GLKVector3Distance(node1Pos, node2Pos)
-        let cilindroPosition = SCNVector3(x: nodeA.position.x + 0.05, y: nodeA.position.y, z: nodeA.position.z)
-        
-        let cilinderNode = SCNNode(geometry: SCNCylinder(radius: 0.005, height: CGFloat(height)))
-        cilinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-        cilinderNode.worldPosition = cilindroPosition
-        cilinderNode.physicsBody?.categoryBitMask = 0
-        cilinderNode.physicsBody?.contactTestBitMask = 0
-        cilinderNode.physicsBody?.collisionBitMask = 0
-        return cilinderNode
     }
 }
 
