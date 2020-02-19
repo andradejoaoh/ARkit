@@ -42,10 +42,7 @@ class Molecule {
     func addConnection(atomA: Atomo, AtomB: Atomo) {
         guard let firstAtom = atomA.checkIfIsConnected(atom: AtomB) else {return}
         guard let secondAtom = AtomB.checkIfIsConnected(atom: atomA) else {return}
-        
-        firstAtom.atomsConnected.append(secondAtom)
-        secondAtom.atomsConnected.append(firstAtom)
-        
+
         firstAtom.eletronsNaValencia! -= 1
         secondAtom.eletronsNaValencia! -= 1
         
