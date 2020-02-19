@@ -18,6 +18,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     var molecules: [Molecule] = []
     
+    var atomsNodes: [SCNNode] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +93,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         let firstAtomNode = contact.nodeA
         let secondAtomNode = contact.nodeB
         
+        atomsNodes.append(firstAtomNode)
+        atomsNodes.append(secondAtomNode)
+        
         if !firstAtom.checkIfAtomsIsConnected(checkedAtom: secondAtom), !secondAtom.checkIfAtomsIsConnected(checkedAtom: firstAtom) {
             guard let molecule = createMolecule(firstAtom: firstAtom, secondAtom: secondAtom) else { return }
             
@@ -110,50 +115,46 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        for ligacao in ligacoes {
-            guard let firstAtomo = ligacao.atomos?.0 else {return}
-            guard let secondAtomo = ligacao.atomos?.1 else {return}
-            let firstPosition = SCNVector3ToGLKVector3(firstAtomo.worldPosition)
-            let secondPosition = SCNVector3ToGLKVector3(secondAtomo.worldPosition)
-            let distance = GLKVector3Distance(firstPosition, secondPosition)
+        
+        
+        for i in atomsNodes.indices {
             
-            if distance > 0.12 {
-                ligacao.removeFromParentNode()
-                ligacoes.removeAll{ $0 == ligacao }
+            let firstAtomNode = atomsNodes[i]
+            
+            guard let firstAtom = firstAtomNode.parent as? Atomo else { return }
+            guard let molecule = firstAtom.molecule else { return }
+            
+            for w in atomsNodes.indices {
+                
+                let secondAtomNode = atomsNodes[w]
+                guard let secondAtom = secondAtomNode.parent as? Atomo else { return }
+                
+                let distance = firstAtomNode.worldPosition - secondAtomNode.worldPosition
+                let distanceLenght = distance.length()
+                
+                if distanceLenght > 0.15 {
+                    firstAtomNode.enumerateChildNodes { (node, stop) in
+                        node.removeFromParentNode()                        
+                    }
+                    firstAtom.eletronsNaValencia! += 1
+                    firstAtom.atomsConnected.removeAll { (atom) -> Bool in
+                        atom == secondAtom
+                    }
+                    
+                    secondAtom.atomsConnected.removeAll { (atom) -> Bool in
+                        atom == firstAtom
+                    }
+                    
+                    molecule.atoms.removeAll { (atom) -> Bool in
+                        atom == firstAtom
+                    }
+                    
+                    firstAtom.molecule = nil
+                }
             }
-            
         }
+    }
         
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        
-    }
-
-    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
-            
-//        guard let firstAtom = contact.nodeA.parent as? Atomo else {return}
-//        guard let secondAtom = contact.nodeB.parent as? Atomo else {return}
-//        
-//        let firstAtomNode = contact.nodeA
-//        let secondAtomNode = contact.nodeB
-//            
-//        guard let molecule = firstAtom.molecule else {return}
-//        molecule.removeAtom(atom: secondAtom)
-//        molecule.removeAtom(atom: firstAtom)
-//        
-////        self.molecules.removeAll{ $0 == molecule }
-//        
-//        firstAtomNode.enumerateChildNodes { (node, stop) in
-//            node.removeFromParentNode()
-//        }
-//        
-//        secondAtomNode.enumerateChildNodes { (node, stop) in
-//            node.removeFromParentNode()
-//        }
-    }
-    
-    
     func createMolecule(firstAtom: Atomo, secondAtom: Atomo) -> Molecule? {
         
         
