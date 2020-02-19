@@ -56,4 +56,16 @@ class Atomo: SCNNode {
         }
         return nil
     }
+    
+    func checkIfHaveMolecule() -> Bool {
+        
+        var check: Bool = false
+        
+        if atomsConnected.isEmpty == true {
+            check = true
+        }
+        
+        return check
+        
+    }
 }
