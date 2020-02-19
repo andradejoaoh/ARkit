@@ -18,6 +18,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     var molecules: [Molecule] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the view's delegate
@@ -103,8 +104,29 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
                     firstAtomNode.addChildNode(atomConection)
                 }
             }
-
         }
+        
+    }
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        for ligacao in ligacoes {
+            guard let firstAtomo = ligacao.atomos?.0 else {return}
+            guard let secondAtomo = ligacao.atomos?.1 else {return}
+            let firstPosition = SCNVector3ToGLKVector3(firstAtomo.worldPosition)
+            let secondPosition = SCNVector3ToGLKVector3(secondAtomo.worldPosition)
+            let distance = GLKVector3Distance(firstPosition, secondPosition)
+            
+            if distance > 0.12 {
+                ligacao.removeFromParentNode()
+                ligacoes.removeAll{ $0 == ligacao }
+            }
+            
+        }
+        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
     }
 
@@ -129,10 +151,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
 //        secondAtomNode.enumerateChildNodes { (node, stop) in
 //            node.removeFromParentNode()
 //        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        <#code#>
     }
     
     
@@ -205,7 +223,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Pause the view's session
         sceneView.session.pause()
     }
-    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -232,6 +249,5 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         
     }
     
-
 }
 
