@@ -85,11 +85,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         guard let firstNode = contact.nodeA.parent as? Atomo else {return}
         guard let secondNode = contact.nodeB.parent as? Atomo else {return}
         if (firstNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) {
+            let noRotacao = SCNNode()
             let ligacao = Ligacao(firstNode, secondNode)
             firstNode.ligacoes += 1
             secondNode.ligacoes += 1
             ligacoes.append(ligacao)
-            contact.nodeA.addChildNode(ligacao)
+            noRotacao.addChildNode(ligacao)
+            contact.nodeA.addChildNode(noRotacao)
+            noRotacao.eulerAngles.y = rotacionar(primeiroAtomo: firstNode, segundoAtomo: secondNode)
         }
         return
     }
@@ -100,10 +103,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             let firstPosition = SCNVector3ToGLKVector3(firstAtomo.worldPosition)
             let secondPosition = SCNVector3ToGLKVector3(secondAtomo.worldPosition)
             let distance = GLKVector3Distance(firstPosition, secondPosition)
-            
             if distance > 0.13 {
                 ligacao.atomos?.0.ligacoes -= 1
                 ligacao.atomos?.1.ligacoes -= 1
+                ligacao.parent?.removeFromParentNode()
                 ligacao.removeFromParentNode()
                 ligacoes.removeAll{ $0 == ligacao }
             }
@@ -111,8 +114,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         }
         
     }
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-
+    
+    func rotacionar(primeiroAtomo: Atomo, segundoAtomo: Atomo) -> Float{
+        let primeiroAtomoPos = primeiroAtomo.worldPosition
+        let segundoAtomoPos = segundoAtomo.worldPosition
+        
+        let deltaX = primeiroAtomoPos.x - segundoAtomoPos.x
+        let deltaY = primeiroAtomoPos.y - segundoAtomoPos.y
+        let angulo = atan2(deltaY, deltaX)
+        return angulo
     }
     
     override func viewWillDisappear(_ animated: Bool) {
