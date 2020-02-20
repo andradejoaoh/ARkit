@@ -92,7 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             ligacoes.append(ligacao)
             noRotacao.addChildNode(ligacao)
             contact.nodeA.addChildNode(noRotacao)
-            noRotacao.eulerAngles.y = rotacionar(primeiroAtomo: firstNode, segundoAtomo: secondNode)
+            noRotacao.eulerAngles.y += rotacionar(primeiroAtomo: firstNode, segundoAtomo: secondNode)
         }
         return
     }
@@ -119,10 +119,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         let primeiroAtomoPos = primeiroAtomo.worldPosition
         let segundoAtomoPos = segundoAtomo.worldPosition
         
-        let deltaX = primeiroAtomoPos.x - segundoAtomoPos.x
-        let deltaY = primeiroAtomoPos.y - segundoAtomoPos.y
-        let angulo = atan2(deltaY, deltaX)
-        return angulo
+        let deltaX = segundoAtomoPos.x - primeiroAtomoPos.x
+        let deltaZ = segundoAtomoPos.z - primeiroAtomoPos.z
+        let angulo = atan2(deltaX, deltaZ)
+        print(angulo)
+        return angulo - .pi/2
     }
     
     override func viewWillDisappear(_ animated: Bool) {
