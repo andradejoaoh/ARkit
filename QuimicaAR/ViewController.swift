@@ -13,9 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDelegate{
     
     @IBOutlet var sceneView: ARSCNView!
-    
-    var moleculeConection: [SCNGeometry] = []
-    let mat = SCNMaterial()
+    var ligacoes: [Ligacao] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +23,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         sceneView.scene.physicsWorld.contactDelegate = self
-        
-        mat.diffuse.contents  = UIColor.white
-        mat.specular.contents = UIColor.white
+
         
         JSONHandler.shared.readAtomos()
     }
@@ -89,13 +85,49 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
-        nodeLinha.eulerAngles.x = .pi/2
-    
-        self.sceneView.scene.rootNode.addChildNode(nodeLinha)
+        guard let firstNode = contact.nodeA.parent as? Atomo else {return}
+        guard let secondNode = contact.nodeB.parent as? Atomo else {return}
+        if (firstNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) && (secondNode.ligacoes < firstNode.numeroDeLigacoes ?? 0) {
+            let noRotacao = SCNNode()
+            let ligacao = Ligacao(firstNode, secondNode)
+            firstNode.ligacoes += 1
+            secondNode.ligacoes += 1
+            ligacoes.append(ligacao)
+            noRotacao.addChildNode(ligacao)
+            contact.nodeA.addChildNode(noRotacao)
+            noRotacao.eulerAngles.y += rotacionar(primeiroAtomo: firstNode, segundoAtomo: secondNode)
+        }
+        return
     }
-
-
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        for ligacao in ligacoes {
+            guard let firstAtomo = ligacao.atomos?.0 else {return}
+            guard let secondAtomo = ligacao.atomos?.1 else {return}
+            let firstPosition = SCNVector3ToGLKVector3(firstAtomo.worldPosition)
+            let secondPosition = SCNVector3ToGLKVector3(secondAtomo.worldPosition)
+            let distance = GLKVector3Distance(firstPosition, secondPosition)
+            if distance > 0.13 {
+                ligacao.atomos?.0.ligacoes -= 1
+                ligacao.atomos?.1.ligacoes -= 1
+                ligacao.parent?.removeFromParentNode()
+                ligacao.removeFromParentNode()
+                ligacoes.removeAll{ $0 == ligacao }
+            }
+            
+        }
+        
+    }
+    
+    func rotacionar(primeiroAtomo: Atomo, segundoAtomo: Atomo) -> Float{
+        let primeiroAtomoPos = primeiroAtomo.worldPosition
+        let segundoAtomoPos = segundoAtomo.worldPosition
+        
+        let deltaX = segundoAtomoPos.x - primeiroAtomoPos.x
+        let deltaZ = segundoAtomoPos.z - primeiroAtomoPos.z
+        let angulo = atan2(deltaX, deltaZ)
+        print(angulo)
+        return angulo - .pi/2
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -103,7 +135,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Pause the view's session
         sceneView.session.pause()
     }
-    
     // MARK: - ARSCNViewDelegate
     
 /*
@@ -128,22 +159,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
-    }
-    
-    func createCilider(posA: SCNVector3, posB: SCNVector3) -> SCNNode {
-        let node1Pos = SCNVector3ToGLKVector3(posA)
-        let node2Pos = SCNVector3ToGLKVector3(posB)
-
-        let height = GLKVector3Distance(node1Pos, node2Pos)
-        let cilindroPosition = SCNVector3(x: (posA.x + posB.x)/2, y: (posA.y + posB.y)/2, z: (posA.z + posB.z)/2)
-        
-        let cilinderNode = SCNNode(geometry: SCNCylinder(radius: 0.005, height: CGFloat(height)))
-        cilinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-        cilinderNode.worldPosition = cilindroPosition
-        cilinderNode.physicsBody?.categoryBitMask = 0
-        cilinderNode.physicsBody?.contactTestBitMask = 0
-        cilinderNode.physicsBody?.collisionBitMask = 0
-        return cilinderNode
     }
 }
 

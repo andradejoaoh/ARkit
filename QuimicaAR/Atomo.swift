@@ -12,6 +12,7 @@ import SceneKit
 class Atomo: SCNNode {
     var nomeElemento: String?
     var numeroDeLigacoes: Int?
+    var ligacoes: Int = 0
     init(_ nomeElemento: String) {
         super.init()
         let url = "art.scnassets/" + nomeElemento + ".scn"
