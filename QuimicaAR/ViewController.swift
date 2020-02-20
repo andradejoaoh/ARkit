@@ -89,7 +89,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             firstNode.ligacoes += 1
             secondNode.ligacoes += 1
             ligacoes.append(ligacao)
-            firstNode.addChildNode(ligacao)
+            contact.nodeA.addChildNode(ligacao)
         }
         return
     }

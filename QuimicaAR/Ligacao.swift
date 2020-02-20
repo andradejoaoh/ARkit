@@ -19,18 +19,26 @@ class Ligacao: SCNNode {
         
         let node1Pos = SCNVector3ToGLKVector3(primeiroAtomo.worldPosition)
         let node2Pos = SCNVector3ToGLKVector3(segundoAtomo.worldPosition)
-        
         let height = GLKVector3Distance(node1Pos, node2Pos)
-        let posicaoX = (primeiroAtomo.childNodes[0].worldPosition.x + segundoAtomo.childNodes[0].worldPosition.x)/2
-        let posicaoY = (primeiroAtomo.childNodes[0].worldPosition.y + segundoAtomo.childNodes[0].worldPosition.y)/2
-        let posicaoZ = (primeiroAtomo.childNodes[0].worldPosition.z + segundoAtomo.childNodes[0].worldPosition.z)/2
-        let posicao = SCNVector3(x: posicaoX, y: posicaoY, z: posicaoZ)
+
+        self.position.x = Float(-0.05)
+
+        if primeiroAtomo.worldPosition.x < segundoAtomo.position.x {
+            self.position.x = Float(0.05)
+        }
+        let deltaY = abs(primeiroAtomo.worldPosition.y - segundoAtomo.worldPosition.y)
+        let deltaX = abs(primeiroAtomo.worldPosition.x - primeiroAtomo.worldPosition.x)
+        let hiptenusa = sqrt(deltaX*deltaX + deltaY*deltaY)
+        
         let cilinderNode = SCNNode(geometry: SCNCylinder(radius: 0.005, height: CGFloat(height)))
         cilinderNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
         self.geometry = cilinderNode.geometry
-        self.worldPosition = posicao
         self.eulerAngles.z = .pi/2
-//        self.look(at: SCNVector3(x:(segundoAtomo.position.x + .pi/2), y: (segundoAtomo.position.y + .pi/2), z: segundoAtomo.position.z ))
+//        self.eulerAngles.y = segundoAtomo.eulerAngles.y
+//        self.eulerAngles = SCNVector3(Float.pi / 2,
+//                                      acos((primeiroAtomo.position.z-segundoAtomo.position.z)/height),
+//        atan2((primeiroAtomo.position.y-segundoAtomo.position.y),(primeiroAtomo.position.x-segundoAtomo.position.x)))
+//        self.look(at: SCNVector3(x:(segundoAtomo.position.x), y: (segundoAtomo.position.y + .pi/2), z: segundoAtomo.position.z ))
     }
     
     required init?(coder: NSCoder) {
