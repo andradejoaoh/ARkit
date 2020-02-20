@@ -8,9 +8,9 @@
 
 import Foundation
 enum Elemento: String {
-    case hidrogenio
-    case oxigenio
-    case carbono
-    case nitrogenio
-    case fluor
+    case hidrogenio, hidrogenio1, hidrogenio2, hidrogenio3
+    case oxigenio, oxigenio1, oxigenio2, oxigenio3
+    case carbono, carbono1, carbono2, carbono3
+    case nitrogenio, nitrogenio1, nitrogenio2, nitrogenio3
+    case fluor, fluor1, fluor2, fluor3
 }

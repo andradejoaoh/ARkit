@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "carbono.png"
+      "filename" : "nitrogenio-1.png"
     }
   ],
   "info" : {
@@ -10,7 +10,7 @@
     "author" : "xcode"
   },
   "properties" : {
-    "width" : 9,
+    "width" : 9.8000000000000007,
     "unit" : "centimeters"
   }
 }

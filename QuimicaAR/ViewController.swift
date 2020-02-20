@@ -45,6 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
         // Run the view's session
         sceneView.session.run(configuration)
     }
+    
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
         let node = SCNNode()
@@ -60,30 +61,32 @@ class ViewController: UIViewController, ARSCNViewDelegate, SCNPhysicsContactDele
             var shapeNode: Atomo?
             if let elemento = Elemento(rawValue: imageAnchor.referenceImage.name ?? "hidrogenio"){
                 switch elemento {
-                case .hidrogenio:
+                case .hidrogenio, .hidrogenio1, .hidrogenio2, .hidrogenio3:
                     shapeNode = Atomo("hidrogenio")
                     shapeNode?.name = "hidrogenio"
-                case .oxigenio:
+                case .oxigenio, .oxigenio1, .oxigenio2, .oxigenio3:
                     shapeNode = Atomo("oxigenio")
                     shapeNode?.name = "oxigenio"
-                case .carbono:
+                case .carbono, .carbono1, .carbono2, .carbono3:
                     shapeNode = Atomo("carbono")
                     shapeNode?.name = "carbono"
-                case .fluor:
+                case .fluor, .fluor1, .fluor2, .fluor3:
                     shapeNode = Atomo("fluor")
                     shapeNode?.name = "fluor"
-                case .nitrogenio:
+                case .nitrogenio, .nitrogenio1, .nitrogenio2, .nitrogenio3:
                     shapeNode = Atomo("nitrogenio")
                     shapeNode?.name = "nitrogenio"
                 }
             }
             guard let shape = shapeNode else {return nil}
 
+            self.sceneView.session.remove(anchor: anchor)
             node.addChildNode(shape)
             return node
         }
         return nil
     }
+    
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         let nodeLinha: SCNNode = createCilider(posA: contact.nodeB.worldPosition, posB: contact.nodeA.worldPosition)
