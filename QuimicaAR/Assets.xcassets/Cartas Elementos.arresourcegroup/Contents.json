@@ -1,0 +1,68 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "resources" : [
+    {
+      "filename" : "carbono.arreferenceimage"
+    },
+    {
+      "filename" : "carbono1.arreferenceimage"
+    },
+    {
+      "filename" : "carbono2.arreferenceimage"
+    },
+    {
+      "filename" : "carbono3.arreferenceimage"
+    },
+    {
+      "filename" : "fluor.arreferenceimage"
+    },
+    {
+      "filename" : "fluor1.arreferenceimage"
+    },
+    {
+      "filename" : "fluor2.arreferenceimage"
+    },
+    {
+      "filename" : "fluor3.arreferenceimage"
+    },
+    {
+      "filename" : "hidrogenio.arreferenceimage"
+    },
+    {
+      "filename" : "hidrogenio1.arreferenceimage"
+    },
+    {
+      "filename" : "hidrogenio2.arreferenceimage"
+    },
+    {
+      "filename" : "hidrogenio3.arreferenceimage"
+    },
+    {
+      "filename" : "nitrogenio.arreferenceimage"
+    },
+    {
+      "filename" : "nitrogenio1.arreferenceimage"
+    },
+    {
+      "filename" : "nitrogenio2.arreferenceimage"
+    },
+    {
+      "filename" : "nitrogenio3.arreferenceimage"
+    },
+    {
+      "filename" : "oxigenio.arreferenceimage"
+    },
+    {
+      "filename" : "oxigenio1.arreferenceimage"
+    },
+    {
+      "filename" : "oxigenio2.arreferenceimage"
+    },
+    {
+      "filename" : "oxigenio3.arreferenceimage"
+    }
+  ]
+}
