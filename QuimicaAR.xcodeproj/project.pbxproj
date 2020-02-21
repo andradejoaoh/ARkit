@@ -29,7 +29,7 @@
 		618B110323F7057F007C5474 /* Atomo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomo.swift; sourceTree = "<group>"; };
 		618B110523F706A8007C5474 /* JSONHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
 		618B110723F70706007C5474 /* Atomos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Atomos.json; sourceTree = "<group>"; };
-		619AE3E923F5B42700A497EE /* QuimicaAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuimicaAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		619AE3E923F5B42700A497EE /* React.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = React.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		619AE3EC23F5B42700A497EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		619AE3EE23F5B42700A497EE /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		619AE3F023F5B42700A497EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		619AE3EA23F5B42700A497EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				619AE3E923F5B42700A497EE /* QuimicaAR.app */,
+				619AE3E923F5B42700A497EE /* React.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 			);
 			name = QuimicaAR;
 			productName = QuimicaAR;
-			productReference = 619AE3E923F5B42700A497EE /* QuimicaAR.app */;
+			productReference = 619AE3E923F5B42700A497EE /* React.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -320,7 +320,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.jha.QuimicaAR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = React;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -338,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.jha.QuimicaAR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = React;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
